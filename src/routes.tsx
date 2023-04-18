@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ShopPage from './pages/ShopPage';
-import { ProtectedRoutes, index } from './components/ProtectedRoutes';
+import { ProtectedRoutes } from './components/ProtectedRoutes';
 
 const Router = () => (
   <Routes>

@@ -13,6 +13,8 @@ interface ICartContext {
   setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>;
   filteredProducts: IProduct[];
   setFilteredProducts: React.Dispatch<React.SetStateAction<IProduct[]>>;
+  cartProducts: ICartProduct[];
+  setCartProducts: React.Dispatch<React.SetStateAction<ICartProduct[]>>;
 }
 
 interface IProduct {
@@ -23,12 +25,18 @@ interface IProduct {
   img: string;
 }
 
+export interface ICartProduct extends IProduct {
+  quantity: number;
+  finalPrice: number;
+}
+
 export const CartContext = createContext({} as ICartContext);
 
 export const CartProvider = ({ children }: ICartProviderProps) => {
   const [cartModal, setCartModal] = useState(false);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
+  const [cartProducts, setCartProducts] = useState<ICartProduct[]>([]);
   const token = localStorage.getItem('@kBurguerUserToken');
 
   const getAllProducts = async () => {
@@ -53,6 +61,8 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
         setProducts,
         filteredProducts,
         setFilteredProducts,
+        cartProducts,
+        setCartProducts,
       }}
     >
       {children}

@@ -1,5 +1,6 @@
 import { MdShoppingCart, MdLogout } from 'react-icons/md';
 
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import SearchForm from './SearchForm';
 import { StyledHeader } from './style';
@@ -10,6 +11,12 @@ import { CartContext } from '../../providers/CartContext';
 
 const Header = () => {
   const { setCartModal } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const userLogout = () => {
+    localStorage.removeItem('@kBurguerUserToken');
+    navigate('/');
+  };
 
   return (
     <StyledHeader>
@@ -26,7 +33,7 @@ const Header = () => {
               <button type='button' onClick={() => setCartModal(true)}>
                 <MdShoppingCart size={28} />
               </button>
-              <button type='button'>
+              <button onClick={() => userLogout()} type='button'>
                 <MdLogout size={28} />
               </button>
             </div>

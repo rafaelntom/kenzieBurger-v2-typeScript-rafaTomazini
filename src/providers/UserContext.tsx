@@ -29,19 +29,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser[] | null>(null);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const loadUser = async () => {
-  //     const token = localStorage.getItem('@kBurguerUserToken');
-
-  //     if (!token) {
-  //       <Navigate to='/' />;
-  //     } else {
-  //       setUser(token);
-  //     }
-  //   };
-  //   loadUser();
-  // }, []);
-
   const userLogin = async (data: TLoginFormValues) => {
     try {
       const response = await kenzieApi.post('/login', data);

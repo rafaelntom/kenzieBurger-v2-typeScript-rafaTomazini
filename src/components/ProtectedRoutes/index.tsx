@@ -6,9 +6,9 @@ import { CartProvider } from '../../providers/CartContext';
 export const ProtectedRoutes = () => {
   const { user } = useContext(UserContext);
 
-  if (!user) {
-    return <Navigate to='/' />;
-  }
+  // if (!user) {
+  //   return <Navigate to='/' />;
+  // }
 
   return (
     <CartProvider>
