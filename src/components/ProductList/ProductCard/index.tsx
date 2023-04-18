@@ -1,9 +1,10 @@
+/* eslint-disable no-param-reassign */
 import { toast } from 'react-toastify';
 import { useContext, useEffect } from 'react';
 import { StyledProductCard } from './style';
 import { StyledButton } from '../../../styles/button';
 import { StyledParagraph, StyledTitle } from '../../../styles/typography';
-import { CartContext } from '../../../providers/CartContext';
+import { CartContext, ICartProduct } from '../../../providers/CartContext';
 
 const ProductCard = () => {
   const { getAllProducts, products, cartProducts, setCartProducts } =
@@ -38,7 +39,7 @@ const ProductCard = () => {
       };
 
       toast.success('Item adicionado ao carrinho!');
-      setCartProducts([...cartProducts, productWithQuantity]);
+      setCartProducts([...cartProducts, productWithQuantity] as ICartProduct[]);
     }
   };
 
