@@ -8,7 +8,6 @@ import { CartContext } from '../../providers/CartContext';
 
 const CartModal = () => {
   const { setCartModal, cartProducts } = useContext(CartContext);
-  console.log(cartProducts);
 
   return (
     <StyledCartModalBox>
