@@ -19,10 +19,10 @@ const CartProductCard = () => {
     if (foundProduct) {
       // eslint-disable-next-line operator-assignment
       foundProduct.quantity = foundProduct.quantity + 1;
+      foundProduct.finalPrice = foundProduct.price * foundProduct.quantity;
     }
 
-    console.log(foundProduct);
-    console.log(cartProducts);
+    setCartProducts([...cartProducts]);
   };
 
   const removeItemQuantity = (id: number) => {
@@ -31,13 +31,13 @@ const CartProductCard = () => {
     if (foundProduct) {
       // eslint-disable-next-line operator-assignment
       foundProduct.quantity = foundProduct.quantity - 1;
-      if (foundProduct?.quantity <= 0) {
-        removeItemFromCart(foundProduct.id);
-      }
+      foundProduct.finalPrice = foundProduct.price * foundProduct.quantity;
     }
+    setCartProducts([...cartProducts]);
 
-    console.log(foundProduct);
-    console.log(cartProducts);
+    if (foundProduct?.quantity === 0) {
+      removeItemFromCart(foundProduct.id);
+    }
   };
 
   return (

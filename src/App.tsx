@@ -6,7 +6,7 @@ import { GlobalStyles } from './styles/global';
 
 const App = () => (
   <>
-    <ToastContainer autoClose={2500} position='top-right' />
+    <ToastContainer autoClose={2500} position='top-left' />
     <GlobalStyles />
     <UserProvider>
       <Router />
